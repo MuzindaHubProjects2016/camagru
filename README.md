@@ -6,7 +6,7 @@
 #    By: kmuvezwa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/17 13:47:08 by kmuvezwa          #+#    #+#              #
-#    Updated: 2017/10/17 16:32:56 by kmuvezwa         ###   ########.fr        #
+#    Updated: 2017/10/17 16:38:00 by kmuvezwa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ by email.
 
 • The list of images must be presented in successive pages (i.e. X images by page).
 
+References:
 
 MVC
 
@@ -98,4 +99,3 @@ https://stackoverflow.com/questions/3876299/merging-two-images-with-php
 http://www.walkswithme.net/how-to-superimposing-images-using-php
 
 http://php.net/manual/en/imagick.compositeimage.php
-
