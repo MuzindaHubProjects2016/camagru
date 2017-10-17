@@ -6,11 +6,12 @@
 #    By: kmuvezwa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/17 13:47:08 by kmuvezwa          #+#    #+#              #
-#    Updated: 2017/10/17 14:07:23 by kmuvezwa         ###   ########.fr        #
+#    Updated: 2017/10/17 14:08:38 by kmuvezwa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 Camagru
+
 1 User features
 
 • The application should allow a user to sign up by asking at least for an email, a
