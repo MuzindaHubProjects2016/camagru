@@ -6,7 +6,7 @@
 #    By: kmuvezwa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/17 13:47:08 by kmuvezwa          #+#    #+#              #
-#    Updated: 2017/10/17 14:08:38 by kmuvezwa         ###   ########.fr        #
+#    Updated: 2017/10/17 16:32:56 by kmuvezwa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,3 +52,50 @@ them and/or comment them.
 by email.
 
 • The list of images must be presented in successive pages (i.e. X images by page).
+
+
+MVC
+
+You will have to use the abstraction interface PDO1 to access your database and define the error mode2 on PDO::ERRMODE_EXCEPTION.
+
+You can use the web server of your choice, either Apache, Nginx or even built-in web server3.
+
+Your web application should be at list be compatible with Firefox (>= 41) and Chrome (>= 46).
+
+Your website should have a decent page layout (meaning at least a header, a main section and a footer), able to display on mobile devices and have an adapted layout on small resolutions.
+
+All your forms should have correct validations and the whole site should be secured.
+
+This point is COMPULSORY and shall be verified when the project is evaluated.
+
+To have an idea, here are some stuff that is NOT considered as SECURE:
+• Store plain (unencrypted) passwords in the database.
+• Offer the ability to inject HTML ou “user” JavaScript in badly protected variables.
+• Offer the ability to upload undesired content on the server.
+• Offer the possibility of altering an SQL query.
+
+Capturing images:
+
+http://www.vivekmoyal.in/webcam-in-php-how-to-use-webcam-in-php/
+
+https://www.youtube.com/watch?v=NRXMcZaMlrA
+
+https://www.youtube.com/watch?v=gA_HJMd7uvQ
+
+PDO
+http://php.net/manual/en/book.pdo.php
+
+http://php.net/manual/en/pdo.error-handling.php
+
+Merging Images
+
+https://stackoverflow.com/questions/1481421/superimposing-images-in-php
+
+https://stackoverflow.com/questions/6547784/superimpose-images-with-php
+
+https://stackoverflow.com/questions/3876299/merging-two-images-with-php
+
+http://www.walkswithme.net/how-to-superimposing-images-using-php
+
+http://php.net/manual/en/imagick.compositeimage.php
+
