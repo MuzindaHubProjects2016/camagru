@@ -6,7 +6,7 @@
 #    By: kmuvezwa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/17 13:47:08 by kmuvezwa          #+#    #+#              #
-#    Updated: 2017/10/17 16:38:00 by kmuvezwa         ###   ########.fr        #
+#    Updated: 2017/10/18 11:45:14 by kmuvezwa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,10 @@ by email.
 
 References:
 
+Login, Sessions and Encryption
+
+https://github.com/TheGodOfAwesome/Passphrase
+
 MVC
 
 You will have to use the abstraction interface PDO1 to access your database and define the error mode2 on PDO::ERRMODE_EXCEPTION.
@@ -84,6 +88,7 @@ https://www.youtube.com/watch?v=NRXMcZaMlrA
 https://www.youtube.com/watch?v=gA_HJMd7uvQ
 
 PDO
+
 http://php.net/manual/en/book.pdo.php
 
 http://php.net/manual/en/pdo.error-handling.php
