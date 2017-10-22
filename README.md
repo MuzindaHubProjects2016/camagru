@@ -6,7 +6,7 @@
 #    By: kmuvezwa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/17 13:47:08 by kmuvezwa          #+#    #+#              #
-#    Updated: 2017/10/22 03:26:30 by kmuvezwa         ###   ########.fr        #
+#    Updated: 2017/10/22 17:54:21 by kmuvezwa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,8 @@ To have an idea, here are some stuff that is NOT considered as SECURE:
 • Offer the possibility of altering an SQL query.
 
 Capturing images:
+
+https://trinitytuts.com/capture-and-save-image-with-html5-and-php/
 
 http://www.vivekmoyal.in/webcam-in-php-how-to-use-webcam-in-php/
 

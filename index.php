@@ -81,7 +81,7 @@ if (!empty($_POST['btnLogin'])) {
 <div class="container">
     <div class="row">
             <h4>Register</h4>
-            <form action="index1.php" method="post">
+            <form action="index.php" method="post">
                 <div class="form-group">
                     <label for="">Username</label>
                     <input type="text" name="name" class="form-control"/>
@@ -99,7 +99,7 @@ if (!empty($_POST['btnLogin'])) {
                 </div>
             </form>
             <h4>Login</h4>
-            <form action="index1.php" method="post">
+            <form action="index.php" method="post">
                 <div class="form-group">
                     <label for="">Email</label>
                     <input type="email" name="email" class="form-control"/>

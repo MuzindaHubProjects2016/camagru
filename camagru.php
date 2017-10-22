@@ -1,8 +1,8 @@
 <?php
 
-if($_SESSION['status'] != "logged in")
+if($_SESSION['status'] == "")
 {
-    header("Location: index1.php");
+    header("Location: index.php");
 }
 
 session_start();
