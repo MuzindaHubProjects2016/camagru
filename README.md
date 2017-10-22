@@ -6,7 +6,7 @@
 #    By: kmuvezwa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/17 13:47:08 by kmuvezwa          #+#    #+#              #
-#    Updated: 2017/10/18 11:45:14 by kmuvezwa         ###   ########.fr        #
+#    Updated: 2017/10/22 03:26:30 by kmuvezwa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,8 @@ PDO
 http://php.net/manual/en/book.pdo.php
 
 http://php.net/manual/en/pdo.error-handling.php
+
+https://www.itechempires.com/2016/06/php-login-registration-system-with-php-data-object-pdo/
 
 Merging Images
 
