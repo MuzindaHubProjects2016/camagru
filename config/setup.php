@@ -1,5 +1,6 @@
 <?php
-include 'database.php';
+
+include './database.php';
 echo "user: " . $DB_USER . "<br>";
 echo "host: " . $DB_DSN . "<br>";
 
@@ -19,7 +20,7 @@ $sql2 = "CREATE TABLE IF NOT EXISTS users ("
 . "id int NOT NULL AUTO_INCREMENT,"
 . "name varchar(50),"
 . "email varchar(50),"
-. "password varchar(50),"
+. "password varchar(1000),"
 . "PRIMARY KEY (id));";
 
 //echo $sql2;
@@ -28,7 +29,7 @@ try {
 	$conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$conn->exec($sql2);
-	echo "Users created successfully<br>";
+	echo "Users created successfully <br>";
 } catch (PDOException $e) {
 	echo "error: " . $sql2 . "<br>" . $e->getMessage();
 }
@@ -43,10 +44,11 @@ $sql3 = "CREATE TABLE IF NOT EXISTS images ("
 
 try {
 	$conn->exec($sql3);
-	echo "Images created successfully<br>";
+	echo "Images created successfully <br>";
 } catch (PDOException $e) {
 	echo "error: " . $sql3 . "<br>" . $e->getMessage();
 }
 
 $conn = null;
+
 ?>

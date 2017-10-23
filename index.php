@@ -1,4 +1,5 @@
 <?php
+
 include './config/database.php';
 
 // Start Session
@@ -68,6 +69,7 @@ if (!empty($_POST['btnLogin'])) {
     }
 
 }
+
 ?>
 
 <!doctype html>

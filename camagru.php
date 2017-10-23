@@ -1,13 +1,18 @@
 <?php
 
-if($_SESSION['status'] == "")
+// Start Session
+session_start();
+
+$email = $_SESSION['email'];
+$status = $_SESSION['status'];
+
+if($email == "" && $status != "logged in")
 {
     header("Location: index.php");
 }
 
-session_start();
 echo "Tout Le Monde" . "<br>";
-echo $_SESSION['email'] . "<br>";
-echo $_SESSION['status'] . "<br>"
+echo $email . "<br>";
+echo $status . "<br>";
 
 ?>
