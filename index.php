@@ -22,11 +22,39 @@ if (!empty($_POST['btnRegister'])) {
         	$email = $_POST['email'];
         	$password = $_POST['password'];
         	$enc_password = hash('sha256', $password);
-        	echo $name . "<br>" . $email . "<br>" . $password . "<br>" . $enc_password . "<br>";
-			$sql = "INSERT INTO users(name, email, password) VALUES('" . $name . "',  '" . $email . "',  '" . $enc_password . "');";
-			echo $sql . "<br>";
-			$conn->exec($sql);
-			echo "Registered successfully<br>";
+        	//echo $name . "<br>" . $email . "<br>" . $password . "<br>" . $enc_password . "<br>";
+            //$sql = "INSERT INTO users(name, email, password) VALUES('" . $name . "',  '" . $email . "',  '" . $enc_password . "');";
+            //$sql1 = "SELECT id FROM users WHERE email='" . $email . "';";
+            //echo $sql . "<br>";
+
+            
+            // prepare sql and bind parameters
+            $stmt = $conn->prepare("INSERT INTO users(name, email, password) 
+            VALUES(:name, :email, :password)");
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $enc_password);
+
+            $stmt1 = $conn->prepare("SELECT id FROM users WHERE email=:email");
+            $stmt1->bindParam(':email', $email);
+            $stmt1->execute();
+            if ($stmt1->rowCount() > 0) {
+                echo "Email Is Already In Use! <br>";
+            } else{
+                $stmt->execute();
+                echo "Account Created Login To Continue! <br>";
+            }
+
+            /*foreach ($conn->query($sql1) as $row) {
+                $id = $row['id'];
+            }
+            echo "id = " . $id . "<br>";
+            if ($id != ""){
+                echo "Email is already registered <br>";
+            }else{
+                $conn->exec($sql);
+                echo "Registered successfully <br>";
+            }*/
 		} catch (PDOException $e) {
 			echo "error: " . $sql . "<br>" . $e->getMessage();
 		}
@@ -49,7 +77,7 @@ if (!empty($_POST['btnLogin'])) {
     } else {
     	try {
         	$enc_password = hash('sha256', $password);
-        	echo $email . "<br>" . $password . "<br>" . $enc_password . "<br>";
+            /*echo $email . "<br>" . $password . "<br>" . $enc_password . "<br>";
             $sql = "SELECT COUNT(*) FROM users WHERE email = '" . $email . "' AND password = '" . $enc_password . "';";
             $sql1 = "SELECT * FROM users WHERE email = '" . $email . "' AND password = '" . $enc_password . "';";
         	echo $sql . "<br>";
@@ -66,9 +94,35 @@ if (!empty($_POST['btnLogin'])) {
 					echo "Incorrect user credentials, please try again!" . "<br>";
 				}
 
-			}
+            }*/
+            
+            // prepare sql and bind parameters
+            $stmt = $conn->prepare("SELECT * FROM users 
+            WHERE email=:email AND password=:enc_password");
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $enc_password);
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                /*$stmt1 = $conn->prepare("SELECT name FROM users WHERE email=:email");
+                $stmt1->bindParam(':email', $email);
+                $stmt1->execute();
+                $name = $stmt->*/
+
+                /*$stmt1 = $conn->prepare("SELECT name FROM users WHERE email=:email");
+                $stmt1->bindParam(':email', $email);
+                $row = $statement->fetch();
+                $name = $row['name'];
+
+                $_SESSION['name'] = $name;*/
+                $_SESSION['email'] = $email;
+                $_SESSION['status'] = "logged in";
+                header("Location: camagru.php");
+            } else{
+                echo "Incorrect user credentials, please try again!" . "<br>";
+            }
+
 		} catch (PDOException $e) {
-			echo "error: " . $sql . "<br>" . $e->getMessage();
+			echo "error: " . $e->getMessage();
 		}
 		$conn = null;
     }
