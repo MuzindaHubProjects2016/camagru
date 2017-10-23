@@ -50,10 +50,15 @@ if (!empty($_POST['btnLogin'])) {
     	try {
         	$enc_password = hash('sha256', $password);
         	echo $email . "<br>" . $password . "<br>" . $enc_password . "<br>";
-        	$sql = "SELECT COUNT(*) FROM users WHERE email = '" . $email . "' AND password = '" . $enc_password . "';";
+            $sql = "SELECT COUNT(*) FROM users WHERE email = '" . $email . "' AND password = '" . $enc_password . "';";
+            $sql1 = "SELECT * FROM users WHERE email = '" . $email . "' AND password = '" . $enc_password . "';";
         	echo $sql . "<br>";
 			if ($res = $conn->query($sql)) {
   				if ($res->fetchColumn() > 0) {
+                    foreach ($conn->query($sql1) as $row) {
+                        $name = $row['name'];
+                    }                
+                    $_SESSION['name'] = $name;
 					$_SESSION['email'] = $email;
 					$_SESSION['status'] = "logged in";
 					header("Location: camagru.php");
