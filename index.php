@@ -5,12 +5,17 @@ include './config/database.php';
 // Start Session
 session_start();
 
-$email_check = $_SESSION['email'];
-$status_check = $_SESSION['status'];
+// Start Session
+session_start();
 
-if($email_check == "" && $status_check != "logged in")
+$name = $_SESSION['name'];
+$email = $_SESSION['email'];
+$status = $_SESSION['status'];
+
+if($email != "" && $status == "logged in")
 {
     header("Location: camagru.php");
+    exit();
 }
 
 // check Register request
@@ -30,11 +35,6 @@ if (!empty($_POST['btnRegister'])) {
         	$email = $_POST['email'];
         	$password = $_POST['password'];
         	$enc_password = hash('sha256', $password);
-        	//echo $name . "<br>" . $email . "<br>" . $password . "<br>" . $enc_password . "<br>";
-            //$sql = "INSERT INTO users(name, email, password) VALUES('" . $name . "',  '" . $email . "',  '" . $enc_password . "');";
-            //$sql1 = "SELECT id FROM users WHERE email='" . $email . "';";
-            //echo $sql . "<br>";
-
             
             // prepare sql and bind parameters
             $stmt = $conn->prepare("INSERT INTO users(name, email, password) 
@@ -53,16 +53,6 @@ if (!empty($_POST['btnRegister'])) {
                 echo "Account Created Login To Continue! <br>";
             }
 
-            /*foreach ($conn->query($sql1) as $row) {
-                $id = $row['id'];
-            }
-            echo "id = " . $id . "<br>";
-            if ($id != ""){
-                echo "Email is already registered <br>";
-            }else{
-                $conn->exec($sql);
-                echo "Registered successfully <br>";
-            }*/
 		} catch (PDOException $e) {
 			echo "error: " . $sql . "<br>" . $e->getMessage();
 		}
@@ -85,24 +75,6 @@ if (!empty($_POST['btnLogin'])) {
     } else {
     	try {
         	$enc_password = hash('sha256', $password);
-            /*echo $email . "<br>" . $password . "<br>" . $enc_password . "<br>";
-            $sql = "SELECT COUNT(*) FROM users WHERE email = '" . $email . "' AND password = '" . $enc_password . "';";
-            $sql1 = "SELECT * FROM users WHERE email = '" . $email . "' AND password = '" . $enc_password . "';";
-        	echo $sql . "<br>";
-			if ($res = $conn->query($sql)) {
-  				if ($res->fetchColumn() > 0) {
-                    foreach ($conn->query($sql1) as $row) {
-                        $name = $row['name'];
-                    }                
-                    $_SESSION['name'] = $name;
-					$_SESSION['email'] = $email;
-					$_SESSION['status'] = "logged in";
-					header("Location: camagru.php");
-				} else {
-					echo "Incorrect user credentials, please try again!" . "<br>";
-				}
-
-            }*/
             
             // prepare sql and bind parameters
             $stmt2 = $conn->prepare("SELECT * FROM users WHERE email=:email AND password=:password");
@@ -110,13 +82,9 @@ if (!empty($_POST['btnLogin'])) {
             $stmt2->bindParam(':password', $enc_password);
             $stmt2->execute();
             if ($stmt2->rowCount() > 0) {
-                /*$stmt1 = $conn->prepare("SELECT name FROM users WHERE email=:email");
-                $stmt1->bindParam(':email', $email);
-                $stmt1->execute();
-                $name = $stmt-*/
-
                 $stmt3 = $conn->prepare("SELECT name FROM users WHERE email=:email");
                 $stmt3->bindParam(':email', $email);
+                $stmt3->execute();
                 $row = $stmt3->fetch();
                 $name = $row['name'];
 
@@ -142,7 +110,7 @@ if (!empty($_POST['btnLogin'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Camagru - Home</title>
 </head>
 <body>
  
