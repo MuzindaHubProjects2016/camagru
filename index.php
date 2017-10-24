@@ -4,7 +4,15 @@ include './config/database.php';
 
 // Start Session
 session_start();
- 
+
+$email_check = $_SESSION['email'];
+$status_check = $_SESSION['status'];
+
+if($email_check == "" && $status_check != "logged in")
+{
+    header("Location: camagru.php");
+}
+
 // check Register request
 if (!empty($_POST['btnRegister'])) {
     if ($_POST['name'] == "") {
@@ -97,23 +105,22 @@ if (!empty($_POST['btnLogin'])) {
             }*/
             
             // prepare sql and bind parameters
-            $stmt = $conn->prepare("SELECT * FROM users 
-            WHERE email=:email AND password=:enc_password");
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $enc_password);
-            $stmt->execute();
-            if ($stmt->rowCount() > 0) {
+            $stmt2 = $conn->prepare("SELECT * FROM users WHERE email=:email AND password=:password");
+            $stmt2->bindParam(':email', $email);
+            $stmt2->bindParam(':password', $enc_password);
+            $stmt2->execute();
+            if ($stmt2->rowCount() > 0) {
                 /*$stmt1 = $conn->prepare("SELECT name FROM users WHERE email=:email");
                 $stmt1->bindParam(':email', $email);
                 $stmt1->execute();
-                $name = $stmt->*/
+                $name = $stmt-*/
 
-                /*$stmt1 = $conn->prepare("SELECT name FROM users WHERE email=:email");
-                $stmt1->bindParam(':email', $email);
-                $row = $statement->fetch();
+                $stmt3 = $conn->prepare("SELECT name FROM users WHERE email=:email");
+                $stmt3->bindParam(':email', $email);
+                $row = $stmt3->fetch();
                 $name = $row['name'];
 
-                $_SESSION['name'] = $name;*/
+                $_SESSION['name'] = $name;
                 $_SESSION['email'] = $email;
                 $_SESSION['status'] = "logged in";
                 header("Location: camagru.php");
