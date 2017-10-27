@@ -5,17 +5,17 @@ include './config/database.php';
 // Start Session
 session_start();
 
-// Start Session
-session_start();
+if(isset($_SESSION['email'])) {
 
-$name = $_SESSION['name'];
-$email = $_SESSION['email'];
-$status = $_SESSION['status'];
+    $name = $_SESSION['name'];
+    $email = $_SESSION['email'];
+    $status = $_SESSION['status'];
 
-if($email != "" && $status == "logged in")
-{
-    header("Location: camagru.php");
-    exit();
+    if($email != "" && $status == "logged in")
+    {
+        header("Location: camagru.php");
+        exit();
+    }
 }
 
 // check Register request

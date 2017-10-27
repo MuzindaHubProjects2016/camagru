@@ -6,7 +6,7 @@
 #    By: kmuvezwa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/17 13:47:08 by kmuvezwa          #+#    #+#              #
-#    Updated: 2017/10/22 17:54:21 by kmuvezwa         ###   ########.fr        #
+#    Updated: 2017/10/26 15:07:18 by kmuvezwa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,10 @@ http://www.vivekmoyal.in/webcam-in-php-how-to-use-webcam-in-php/
 https://www.youtube.com/watch?v=NRXMcZaMlrA
 
 https://www.youtube.com/watch?v=gA_HJMd7uvQ
+
+Saving images:
+
+http://www.codepool.biz/upload-html-canvas-data-to-php-server.html
 
 PDO
 

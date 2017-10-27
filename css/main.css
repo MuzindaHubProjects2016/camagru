@@ -1,4 +1,5 @@
 .booth {
+    display:inline-block;
     width:400px;
     background-color:#ccc;
     border:10px solid ;
@@ -6,7 +7,7 @@
 }
 
 .booth-capture-button {
-    display:block;
+    width:400px;
     margin:0px 0;
     padding:10px 20px;
     background-color:#404040;
@@ -17,4 +18,14 @@
 
 #canvas {
     display:none;
+}
+
+#photo {
+    float: right;
+    border:10px solid;
+    margin:0 auto;
+}
+
+#video_overlays {
+    position:absolute;
 }

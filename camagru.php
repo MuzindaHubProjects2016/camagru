@@ -1,5 +1,11 @@
 <?php
 
+header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
+header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s') . ' GMT');
+header('Cache-Control: no-store, no-cache, must-revalidate');
+header('Cache-Control: post-check=0, pre-check=0', false);
+header('Pragma: no-cache'); 
+
 // Start Session
 session_start();
 
@@ -29,12 +35,25 @@ echo $status . "<br>";
     <body>
 
         <div class="booth">
-            <video id="video" width="400" height="300"></video>
-            <a href="#" id="capture" class="booth-capture-button">FUUUU SSSSIIIIOOOON HAAA!</a>
+            <div id="booth_footage">
+                <div id="video_overlays"><img width="400" height="300" src="http://www.bayouinharlem.com/pic/super-saiyan-hair-png-dragon-ball-zs-spiky-hair-quiz-vulture-7534006.png" alt="frame"></div>
+                    <video id="video" width="400" height="300"></video>
+                </div>
+            </div>
+            <img id="photo" width="400" height="300" src="./images/output.png" alt="Fusion">
             <canvas id="canvas" width="400" height="300"></canvas>
-            <img id="photo" width="400" height="300" src="https://i.ytimg.com/vi/HetfG6JR-qc/hqdefault.jpg" alt="Fusion">
+        </div>
+
+        <div class="button">
+            <a href="#" id="capture" class="booth-capture-button">FUUUU SSSSIIIIOOOON HAAA!</a>
         </div>
 
         <script src="js/photo.js"></script>
+        <script src="js/reload.js"></script>
+
+        <form method="post" accept-charset="utf-8" name="form1">
+            <input name="hidden_data" id='hidden_data' type="hidden"/>
+        </form>
+
     </body>
 </html>
