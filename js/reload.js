@@ -11,7 +11,7 @@
         {
             photo.setAttribute('src', './images/output.png');
             window.location.href = './camagru.php';
-        }, 2000);
+        }, 200);
         //alert('Succesfully reloaded');
     });
 
