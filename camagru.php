@@ -40,11 +40,12 @@
                     <video id="video" width="400" height="300"></video>
                 </div>
             </div>
-            <div class="button">
-                <a href="#" id="capture" class="booth-capture-button">FUUUU SSSSIIIIOOOON HAAA!</a>
-            </div>
             <img id="photo" width="400" height="300" src="./images/output.png" alt="Fusion">
             <canvas id="canvas" width="400" height="300"></canvas>
+        </div>
+
+        <div class="button">
+            <a href="#" id="capture" class="booth-capture-button">FUUUU SSSSIIIIOOOON HAAA!</a>
         </div>
 
         <script src="js/photo.js"></script>
