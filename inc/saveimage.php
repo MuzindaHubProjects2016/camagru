@@ -1,11 +1,16 @@
 <?php
 
+// Start Session
+session_start();
+
+$name = $_SESSION['name'];
+
 $upload_dir = "../images/";
 $img = $_POST['hidden_data'];
 $img = str_replace('data:image/png;base64,', '', $img);
 $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);
-$file = $upload_dir . mktime() . ".png";
+$file = $upload_dir . 'input' . ".png";
 $success = file_put_contents($file, $data);
 print $success ? $file : 'Unable to save the file.';
 
@@ -29,11 +34,14 @@ $file2 = $upload_dir . "randomss1.png";
  imagecopy($image, $image_y, 0, 0, 0, 0, $width_y, $height_y);
 
  // Save the resulting image to disk (as png)
+ $image_created = mktime();
+ $image_creator = $name;
+ $image_name = $name . '-' . mktime() . '.png';
 
  imagepng($image, $upload_dir . 'output.png');
-
+ imagepng($image, $upload_dir . $name . '-' . mktime() . '.png');
+ 
  // Clean up
-
  imagedestroy($image);
  imagedestroy($image_x);
  imagedestroy($image_y);

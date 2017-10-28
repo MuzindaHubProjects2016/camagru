@@ -5,16 +5,19 @@ include './config/database.php';
 // Start Session
 session_start();
 
-if(isset($_SESSION['email'])) {
+if(!empty($_SESSION['name'])) { 
 
-    $name = $_SESSION['name'];
-    $email = $_SESSION['email'];
-    $status = $_SESSION['status'];
+    if(isset($_SESSION['email'])) {
 
-    if($email != "" && $status == "logged in")
-    {
-        header("Location: camagru.php");
-        exit();
+        $name = $_SESSION['name'];
+        $email = $_SESSION['email'];
+        $status = $_SESSION['status'];
+
+        if($email != "" && $status == "logged in")
+        {
+            header("Location: camagru.php");
+            exit();
+        }
     }
 }
 

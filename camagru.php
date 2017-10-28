@@ -1,27 +1,27 @@
 <?php
 
-header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
-header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s') . ' GMT');
-header('Cache-Control: no-store, no-cache, must-revalidate');
-header('Cache-Control: post-check=0, pre-check=0', false);
-header('Pragma: no-cache'); 
+    header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
+    header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s') . ' GMT');
+    header('Cache-Control: no-store, no-cache, must-revalidate');
+    header('Cache-Control: post-check=0, pre-check=0', false);
+    header('Pragma: no-cache'); 
 
 // Start Session
-session_start();
+    session_start();
 
-$name = $_SESSION['name'];
-$email = $_SESSION['email'];
-$status = $_SESSION['status'];
+    $name = $_SESSION['name'];
+    $email = $_SESSION['email'];
+    $status = $_SESSION['status'];
 
-if($email == "" && $status != "logged in")
-{
-    header("Location: index.php");
-}
+    if($email == "" && $status != "logged in")
+    {
+        header("Location: index.php");
+    }
 
-echo "Bonjour Tout Le Monde" . "<br>";
-echo $name . "<br>";
-echo $email . "<br>";
-echo $status . "<br>";
+    echo "Bonjour Tout Le Monde" . "<br>";
+    echo $name . "<br>";
+    echo $email . "<br>";
+    echo $status . "<br>";
 
 ?>
 
@@ -40,12 +40,11 @@ echo $status . "<br>";
                     <video id="video" width="400" height="300"></video>
                 </div>
             </div>
+            <div class="button">
+                <a href="#" id="capture" class="booth-capture-button">FUUUU SSSSIIIIOOOON HAAA!</a>
+            </div>
             <img id="photo" width="400" height="300" src="./images/output.png" alt="Fusion">
             <canvas id="canvas" width="400" height="300"></canvas>
-        </div>
-
-        <div class="button">
-            <a href="#" id="capture" class="booth-capture-button">FUUUU SSSSIIIIOOOON HAAA!</a>
         </div>
 
         <script src="js/photo.js"></script>
