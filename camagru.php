@@ -40,7 +40,7 @@
                     <video id="video" width="400" height="300"></video>
                 </div>
             </div>
-            <img id="photo" width="400" height="300" src="./images/output.png" alt="Fusion">
+            <img id="photo" width="400" height="300" src="./images/output.png?v=<?php echo Date("Y.m.d.G.i.s")?>" alt="Fusion">
             <canvas id="canvas" width="400" height="300"></canvas>
         </div>
 

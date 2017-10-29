@@ -3,7 +3,10 @@
 // Start Session
 session_start();
 
+include '../config/conn.php';
+
 $name = $_SESSION['name'];
+$email = $_SESSION['email'];
 
 $upload_dir = "../images/";
 $img = $_POST['hidden_data'];
@@ -14,7 +17,7 @@ $file = $upload_dir . 'input' . ".png";
 $success = file_put_contents($file, $data);
 print $success ? $file : 'Unable to save the file.';
 
-$file2 = $upload_dir . "randomss1.png";
+$file2 = $upload_dir . "randomss1.png";     
 
  // Get dimensions for specified images
 
@@ -45,5 +48,18 @@ $file2 = $upload_dir . "randomss1.png";
  imagedestroy($image);
  imagedestroy($image_x);
  imagedestroy($image_y);
+
+ try {
+    // prepare sql and bind parameters
+    $stmt = $conn->prepare("INSERT INTO images(image_creator, image_creator_email, image_url) 
+    VALUES(:image_creator, :image_creator_email, :image_url)");
+    $stmt->bindParam(':image_creator', $name);
+    $stmt->bindParam(':image_creator_email', $email);
+    $stmt->bindParam(':image_url', $image_name);
+    $stmt->execute();
+} catch (PDOException $e) {
+    echo "error: " . $sql . "<br>" . $e->getMessage();
+}
+$conn = null;
 
 ?>
