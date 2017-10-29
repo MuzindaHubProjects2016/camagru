@@ -80,7 +80,7 @@ if (!empty($_POST['btnRegister'])) {
                     // Your message
                     $message="Your Confirmation link \r\n";
                     $message.="Click on this link to activate your account \r\n";
-                    $message.="http://localhost:8080/cam/inc/confirmation.php?passkey=$confirm_code";
+                    $message.="http://localhost:8080/camagru/inc/confirmation.php?passkey=$confirm_code";
     
                     // send email
                     $sentmail = mail($to,$subject,$message,$header);

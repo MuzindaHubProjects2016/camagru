@@ -31,7 +31,7 @@ if (!empty($_POST['btnReset'])) {
                     // Your message
                     $message="Your password reset link \r\n";
                     $message.="Click on this link to reset your password \r\n";
-                    $message.="http://localhost:8080/cam/inc/resetlink.php?passkey=$confirm_code";
+                    $message.="http://localhost:8080/camagru/inc/resetlink.php?passkey=$confirm_code";
     
                     // send email
                     $sentmail = mail($to,$subject,$message,$header);
