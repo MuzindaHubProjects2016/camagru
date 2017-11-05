@@ -8,7 +8,7 @@ if(isset($_FILES["fileToUpload"])){
     $expensions= array("jpeg","jpg","png");
     
 
-    $target_dir = "/images/";
+    $target_dir = "/images/assets/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -55,9 +55,10 @@ if(isset($_FILES["fileToUpload"])){
             $naming =  $_FILES["fileToUpload"]["name"];
             echo $naming . "<br>";
             
-            $upload_dir = SITE_ROOT . "/images/";
+            $upload_fir = SITE_ROOT . "/images/";         
+            $upload_dir = SITE_ROOT . "/images/assets/";
             $file = $upload_dir . $naming;
-            $file2 = $upload_dir . "randomss1.png";     
+            $file2 = $upload_dir . "overlay.png";     
             
              // Get dimensions for specified images
             
@@ -88,7 +89,7 @@ if(isset($_FILES["fileToUpload"])){
              $image_name = $name . '-' . mktime() . '.png';
             
              imagepng($image, $upload_dir . 'output.png');
-             imagepng($image, $upload_dir . $name . '-' . mktime() . '.png');
+             imagepng($image, $upload_fir . $name . '-' . mktime() . '.png');
              
              // Clean up
              imagedestroy($image);

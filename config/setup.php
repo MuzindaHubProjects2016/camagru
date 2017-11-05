@@ -39,6 +39,7 @@ try {
 
 $sql3 = "CREATE TABLE IF NOT EXISTS images ("
 . "image_id int NOT NULL AUTO_INCREMENT,"
+. "image_name varchar(100),"
 . "image_creator varchar(50),"
 . "image_creator_email varchar(50),"
 . "image_likes int,"
@@ -56,6 +57,7 @@ try {
 $sql4 = "CREATE TABLE IF NOT EXISTS comments ("
 . "comment_id int NOT NULL AUTO_INCREMENT,"
 . "comment_creator varchar(50),"
+. "image_name varchar(100),"
 . "image_id int,"
 . "image_creator varchar(50),"
 . "image_creator_email varchar(50),"

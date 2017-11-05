@@ -8,7 +8,8 @@ include '../config/conn.php';
 $name = $_SESSION['name'];
 $email = $_SESSION['email'];
 
-$upload_dir = "../images/";
+$upload_fir = "../images/";
+$upload_dir = "../images/assets/";
 $img = $_POST['hidden_data'];
 $img = str_replace('data:image/png;base64,', '', $img);
 $img = str_replace(' ', '+', $img);
@@ -17,7 +18,7 @@ $file = $upload_dir . 'input' . ".png";
 $success = file_put_contents($file, $data);
 print $success ? $file : 'Unable to save the file.';
 
-$file2 = $upload_dir . "randomss1.png";     
+$file2 = $upload_dir . "overlay.png";     
 
  // Get dimensions for specified images
 
@@ -42,7 +43,7 @@ $file2 = $upload_dir . "randomss1.png";
  $image_name = $name . '-' . mktime() . '.png';
 
  imagepng($image, $upload_dir . 'output.png');
- imagepng($image, $upload_dir . $name . '-' . mktime() . '.png');
+ imagepng($image, $upload_fir . $name . '-' . mktime() . '.png');
  
  // Clean up
  imagedestroy($image);
@@ -51,8 +52,9 @@ $file2 = $upload_dir . "randomss1.png";
 
  try {
     // prepare sql and bind parameters
-    $stmt = $conn->prepare("INSERT INTO images(image_creator, image_creator_email, image_url) 
-    VALUES(:image_creator, :image_creator_email, :image_url)");
+    $stmt = $conn->prepare("INSERT INTO images(image_name, image_creator, image_creator_email, image_url) 
+    VALUES(:image_name, :image_creator, :image_creator_email, :image_url)");
+    $stmt->bindParam(':image_name', $image_name);
     $stmt->bindParam(':image_creator', $name);
     $stmt->bindParam(':image_creator_email', $email);
     $stmt->bindParam(':image_url', $image_name);

@@ -133,6 +133,9 @@ if (!empty($_POST['btnLogin'])) {
                     $_SESSION['name'] = $name;
                     $_SESSION['email'] = $email;
                     $_SESSION['overlay'] = 1;
+                    $_SESSION['gallery_count'] = 0;
+                    $_SESSION['gallery_start'] = 0;
+                    $_SESSION['gallery_end'] = 0;
                     $_SESSION['status'] = "logged in";
                     header("Location: camagru.php");
                 } else {

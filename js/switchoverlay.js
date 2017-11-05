@@ -1,5 +1,5 @@
 (function() {
-  alert('Succesfully reloaded');
+  //alert('Succesfully reloaded');
   var overlay = document.getElementById('photo');
 
   document.getElementById('switch').addEventListener('click', 
@@ -8,7 +8,7 @@
     xhr.open('POST', './inc/overlay.php', true);
 
     xhr.onload = function() {
-      alert('Succesfully changed');
+      //alert('Succesfully changed');
     };
     
       setTimeout(function()
