@@ -16,12 +16,6 @@ if($email == "" && $status != "logged in")
     header("Location: index.php");
 }
 
-echo "Bonjour " . $name . "<br>";
-echo $name . "<br>";
-echo $email . "<br>";
-echo $status . "<br>";
-echo $overlay . "<br>";
-
 if (isset($_GET['switchoverlay'])) {
 
     $overlay = $_SESSION['overlay'];

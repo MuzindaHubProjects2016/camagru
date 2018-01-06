@@ -13,7 +13,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Camagru - Home</title>
+        <title>Camagru</title>
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>

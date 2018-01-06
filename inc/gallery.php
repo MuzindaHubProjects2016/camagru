@@ -15,7 +15,7 @@ if ($condition == 'next') {
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Camagru - Home</title>
+        <title>Camagru - Gallery</title>
         <link rel="stylesheet" href="css/gallery.css">
     </head>
     <body>
