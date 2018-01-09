@@ -13,10 +13,16 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Camagru</title>
+        <title>Camagru - Home</title>
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="./inc/gallery.php">Gallery</a></li>
+        <li><a href="./inc/update.php">Update Profile</a></li>
+        <li><a href="./inc/logout.php">Logout</a></li>
+    </ul>
         <div id="main_section" align="center">
             <div class="booth_container">
                 <div class="booth">

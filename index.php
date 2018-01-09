@@ -159,10 +159,14 @@ if (!empty($_POST['btnLogin'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Camagru - Home</title>
+    <title>Camagru</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
- 
+<ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="./inc/gallery.php">Gallery</a></li>
+</ul>
 <div class="container">
     <div class="row">
             <h4>Register</h4>

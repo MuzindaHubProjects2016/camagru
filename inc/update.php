@@ -101,9 +101,14 @@ if (!empty($_POST['btnUpdate'])) {
 <head>
     <meta charset="UTF-8">
     <title>Camagru - Home</title>
+    <link rel="stylesheet" href="../css/gallery.css">
 </head>
 <body>
- 
+<ul>
+        <li><a href="../camagru.php">Home</a></li>
+        <li><a href="./gallery.php">Gallery</a></li>
+        <li><a href="./logout.php">Logout</a></li>
+</ul>
 <div class="container">
     <div class="row">
             <h4>Update</h4>

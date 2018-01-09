@@ -29,9 +29,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Camagru - Display Image</title>
-        <link rel="stylesheet" href="css/gallery.css">
+        <link rel="stylesheet" href="../css/gallery.css">
     </head>
     <body>
+    <ul>
+        <li><a href="./camagru.php">Home</a></li>
+        <li><a href="./inc/logout.php">Logout</a></li>
+    </ul>
         <h1 align="center" style="margin: 0px auto;"><?php echo $image_name; ?></h1>
         <div  align="center" style="margin: 0px auto;">
             <?php

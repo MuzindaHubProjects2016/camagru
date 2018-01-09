@@ -16,9 +16,13 @@ if ($condition == 'next') {
     <head>
         <meta charset="UTF-8">
         <title>Camagru - Gallery</title>
-        <link rel="stylesheet" href="css/gallery.css">
+        <link rel="stylesheet" href="../css/gallery.css">
     </head>
     <body>
+    <ul>
+        <li><a href="../camagru.php">Home</a></li>
+        <li><a href="./logout.php">Logout</a></li>
+    </ul>
         <h1 align="center" style="margin: 0px auto;">Gallery</h1>
         <table align="center" style="margin: 0px auto;">
             <?php
