@@ -14,8 +14,10 @@ if($email == "" && $status != "logged in")
 
 // check Register request
 if (!empty($_POST['btnUpdate'])) {
-    $stmt_user = $conn->prepare("SELECT * FROM users WHERE name=:name");
-    $stmt_user->bindValue(":name", $name);
+
+    $id = 0;
+    $stmt_user = $conn->prepare("SELECT * FROM users WHERE email=:email");
+    $stmt_user->bindValue(":email", $email);
 
     // initialise an array for the results 
     $image = array();
@@ -23,46 +25,54 @@ if (!empty($_POST['btnUpdate'])) {
         while ($row = $stmt_user->fetch(PDO::FETCH_ASSOC)) {
             $image[] = $row;
             $id = $row['id'];
-            echo $id . '</br>';
         }
     }
 
-    if ($_POST['name'] != "" || $_POST['email'] != "" || $_POST['password'] != "")
-    {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $password = hash('sha256', $password);
+    $newname = $_POST['name'];
+    $newemail = $_POST['email'];
+    $password = $_POST['password'];
+    $repeatedpassword = $_POST['repeat_password'];
+    $encpassword = hash('sha256', $password);
 
-        if ($_POST['name'] != "")
+
+    echo $id . '</br>';
+    echo $newname . '</br>';
+    echo $newemail . '</br>';
+    echo $password . '</br>';
+    echo $repeatedpassword . '</br>';
+    echo $encpassword . '</br>';
+   
+        if ($newname != "" && $id != 0)
         {
             try 
             {
                 // prepare sql and bind parameters
-                $stmt = $conn->prepare("UPDATE users SET name=:name  WHERE id=:id");
-                $stmt->bindParam(':name', $name);
+                $stmt = $conn->prepare("UPDATE users SET name=:name  
+                WHERE id=:id");
+                $stmt->bindParam(':name', $newname);
                 $stmt->bindParam(':id', $id);
                 $stmt->execute();
-		    } catch (PDOException $e) {
+            } catch (PDOException $e) {
 			    echo "error: " . $sql . "<br>" . $e->getMessage();
 		    }
-            $conn = null;
         }
-        else if ($_POST['email'] == "")
+      
+        if ($newemail != "" && $id != 0)
         {    
             try 
             {
                 // prepare sql and bind parameters
-                $stmt_email = $conn->prepare("UPDATE users SET email=:email  WHERE id=:id");
-                $stmt_email->bindParam(':email', $email);
+                $stmt_email = $conn->prepare("UPDATE users SET email=:email  
+                WHERE id=:id");
+                $stmt_email->bindParam(':email', $newemail);
                 $stmt_email->bindParam(':id', $id);
-                $stmt_email->execute(); 
+                $stmt_email->execute();
 		    } catch (PDOException $e) {
 			    echo "error: " . $sql . "<br>" . $e->getMessage();
 		    }
-            $conn = null;
         }
-        else if ($_POST['password'] != "" && $_POST['repeat_password'] != "")
+        
+        if ($password != "" && $repeatedpassword != "" && $id != 0)
         {
         
             if ($_POST['repeat_password'] != $_POST['password']) {
@@ -80,23 +90,23 @@ if (!empty($_POST['btnUpdate'])) {
                 try 
                 {
                     // prepare sql and bind parameters
-                    $stmt_password = $conn->prepare("UPDATE users SET password=:password  WHERE id=:id");
-                    $stmt_password->bindParam(':password', $password);
+                    $stmt_password = $conn->prepare("UPDATE users SET password=:password  
+                    WHERE id=:id");
+                    $stmt_password->bindParam(':password', $encpassword);
                     $stmt_password->bindParam(':id', $id);
-                    $stmt_password->execute(); 
+                    $stmt_password->execute();
 		        }catch (PDOException $e) {
 			        echo "error: " . $sql . "<br>" . $e->getMessage();
 		        }
-                $conn = null;
             }
-        }    
-        header("Location: updatecheck.php");
-    } 
+        }
+        $conn = null;
+        header("Location: ./updatecheck.php");
 }
 
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
