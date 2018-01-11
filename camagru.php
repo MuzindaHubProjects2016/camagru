@@ -18,7 +18,7 @@
     </head>
     <body>
     <ul>
-        <li><a href="#home">Home</a></li>
+        <li><a href="./">Home</a></li>
         <li><a href="./inc/gallery.php">Gallery</a></li>
         <li><a href="./inc/update.php">Update Profile</a></li>
         <li><a href="./inc/logout.php">Logout</a></li>
