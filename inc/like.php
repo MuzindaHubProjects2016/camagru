@@ -19,6 +19,7 @@ if($_GET['image_name'])
 
     $stmt_image = $conn->prepare("SELECT * FROM images WHERE image_name=:image_name");
     $stmt_image->bindValue(":image_name", $image_name);
+
     // initialise an array for the results 
     $image = array();
     if ($stmt_image->execute()) {
@@ -26,11 +27,19 @@ if($_GET['image_name'])
             $image[] = $row;
             $image_creator = $row['image_creator'];
             $image_creator_email = $row['image_creator_email'];
+            $image_likes = $row['image_likes'];
         }
     }
 
+    echo $image_likes . '</br>';
+
+    $image_likes = $image_likes + 1;
+
+    echo $image_likes . '</br>';
+
     // prepare sql and bind parameters
-    $stmt = $conn->prepare("UPDATE images SET image_likes = image_likes + 1 WHERE image_name=:image_name");
+    $stmt = $conn->prepare("UPDATE images SET image_likes=:image_likes WHERE image_name=:image_name");
+    $stmt->bindParam(':image_likes', $image_likes);
     $stmt->bindParam(':image_name', $image_name);
 
     // ---------------- SEND MAIL FORM ----------------
