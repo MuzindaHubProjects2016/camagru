@@ -46,9 +46,18 @@ if (!empty($_POST['btnRegister'])) {
         echo $register_error_message . "<br>";
     } else {
         try {
-        	$name = $_POST['name'];
-        	$email = $_POST['email'];
-        	$password = $_POST['password'];
+            $name = trim($_POST['name']);
+            $name = strip_tags($name);
+            $name = htmlspecialchars($name);
+            
+        	$email = trim($_POST['email']);
+            $email = strip_tags($email);
+            $email = htmlspecialchars($email);
+
+        	$password = trim($_POST['password']);
+            $password = strip_tags($password);
+            $password = htmlspecialchars($password);
+
             $enc_password = hash('sha256', $password);
             $confirm_code=md5(uniqid(rand()));
             
@@ -102,9 +111,14 @@ if (!empty($_POST['btnRegister'])) {
 
 // check Login request
 if (!empty($_POST['btnLogin'])) {
-    
-	$email = trim($_POST['email']);
+
+    $email = trim($_POST['email']);
+    $email = strip_tags($email);
+    $email = htmlspecialchars($email);
+
     $password = trim($_POST['password']);
+    $password = strip_tags($password);
+    $password = htmlspecialchars($password);
  
     if ($email == "") {
         $login_error_message = 'Email is required!';
