@@ -30,17 +30,17 @@ if (!empty($_POST['btnUpdate'])) {
 
     $newname = $_POST['name'];
     $newemail = $_POST['email'];
+    $newenote = $_POST['enote'];
     $password = $_POST['password'];
     $repeatedpassword = $_POST['repeat_password'];
     $encpassword = hash('sha256', $password);
 
-
-    echo $id . '</br>';
-    echo $newname . '</br>';
-    echo $newemail . '</br>';
-    echo $password . '</br>';
-    echo $repeatedpassword . '</br>';
-    echo $encpassword . '</br>';
+    //echo $id . '</br>';
+    //echo $newname . '</br>';
+    //echo $newemail . '</br>';
+    //echo $password . '</br>';
+    //echo $repeatedpassword . '</br>';
+    //echo $encpassword . '</br>';
    
         if ($newname != "" && $id != 0)
         {
@@ -67,6 +67,21 @@ if (!empty($_POST['btnUpdate'])) {
                 $stmt_email->bindParam(':email', $newemail);
                 $stmt_email->bindParam(':id', $id);
                 $stmt_email->execute();
+		    } catch (PDOException $e) {
+			    echo "error: " . $sql . "<br>" . $e->getMessage();
+		    }
+        }
+
+        if ($newenote != "unchanged" && $id != 0)
+        {    
+            try 
+            {
+                // prepare sql and bind parameters
+                $stmt_enote = $conn->prepare("UPDATE users SET emailnotifications=:emailnotifications  
+                WHERE id=:id");
+                $stmt_enote->bindParam(':emailnotifications', $newenote);
+                $stmt_enote->bindParam(':id', $id);
+                $stmt_enote->execute();
 		    } catch (PDOException $e) {
 			    echo "error: " . $sql . "<br>" . $e->getMessage();
 		    }
@@ -138,6 +153,14 @@ if (!empty($_POST['btnUpdate'])) {
                 <div class="form-group">
                     <label for="">Repeat Password</label>
                     <input type="password" name="repeat_password" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="">Email Notifications</label>
+                    <select name="enote">
+                        <option value="unchanged"></option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="submit" name="btnUpdate" class="btn btn-primary" value="Update"/>

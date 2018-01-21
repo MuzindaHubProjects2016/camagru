@@ -71,7 +71,7 @@
                 } else {
                     echo 
                     '
-                        Cannot post comment!</br>
+                        Your comment has been added!</br>
                         Go <a href="../camagru.php">Home</a></br>
                         Go to <a href="./gallery.php">Gallery</a></br>
                     ';

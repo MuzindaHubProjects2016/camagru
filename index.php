@@ -60,13 +60,15 @@ if (!empty($_POST['btnRegister'])) {
 
             $enc_password = hash('sha256', $password);
             $confirm_code=md5(uniqid(rand()));
+            $emailnotifications = "yes";
             
             // prepare sql and bind parameters
-            $stmt = $conn->prepare("INSERT INTO users(name, email, password, confirmation_code) 
-            VALUES(:name, :email, :password, :confirmation_code)");
+            $stmt = $conn->prepare("INSERT INTO users(name, email, password, emailnotifications, confirmation_code) 
+            VALUES(:name, :email, :password, :emailnotifications, :confirmation_code)");
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $enc_password);
+            $stmt->bindParam(':emailnotifications', $emailnotifications);
             $stmt->bindParam(':confirmation_code', $confirm_code);
 
             $stmt1 = $conn->prepare("SELECT id FROM users WHERE email=:email");

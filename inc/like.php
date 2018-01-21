@@ -55,20 +55,45 @@ if($_GET['image_name'])
     $message.="Click on this link to view your image\r\n";
     $message.="http://localhost:8080/camagru/inc/display.php?image_url=../images/" . $image_name;
 
+    
     if($stmt->execute())
     {
-        // send email
-        $sentmail = mail($to,$subject,$message,$header);
 
-        // if your email succesfully sent
-        if($sentmail){
+        $stmt_user = $conn->prepare("SELECT * FROM users WHERE email=:email");
+        $stmt_user->bindValue(":email", $email);
+        if ($stmt_user->execute()) {
+            while ($row = $stmt_user->fetch(PDO::FETCH_ASSOC)) {
+                $id = $row['id'];
+                $emailnotifications = $row['emailnotifications'];
+            }
+        }
+
+        if ($emailnotifications == "yes"){
+            // send email
+            $sentmail = mail($to,$subject,$message,$header);
+            if($sentmail){
+                echo 
+                '
+                    Your like has been added!</br>
+                    Go <a href="../camagru.php">Home</a></br>
+                    Go to <a href="./gallery.php">Gallery</a></br>
+                ';
+            } else {
+                echo 
+                '
+                    Your like has been added!</br>
+                    Go <a href="../camagru.php">Home</a></br>
+                    Go to <a href="./gallery.php">Gallery</a></br>
+                ';
+            }
+        } else {
             echo 
             '
                 Your like has been added!</br>
                 Go <a href="../camagru.php">Home</a></br>
                 Go to <a href="./gallery.php">Gallery</a></br>
             ';
-        } 
+        }
     }
     else 
     {

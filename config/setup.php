@@ -22,6 +22,7 @@ $sql2 = "CREATE TABLE IF NOT EXISTS users ("
 . "name varchar(50),"
 . "email varchar(50),"
 . "password varchar(1000),"
+. "emailnotifications varchar(50),"
 . "status varchar(50),"
 . "confirmation_code varchar(1000),"
 . "PRIMARY KEY (id));";

@@ -68,10 +68,6 @@
                 <a href="?switchoverlay" id="switch" class="booth-capture-button">Change Overlay</a>
             </div>
         
-            <script src="js/photo.js"></script>
-            <script src="js/reload.js"></script>
-            <script src="js/switchoverlay.js"></script>
-
             <form method="post" accept-charset="utf-8" name="form1">
                 <input name="hidden_data" id='hidden_data' type="hidden"/>
             </form>
@@ -80,6 +76,16 @@
                 <input type="file" name="fileToUpload" />
                 <input type="submit"/>
             </form>
+            
+            <div class="button" align="center">
+                <a href="?switchoverlay" id="goku" class="booth-capture-button">Goku hair</a>
+                <a href="?switchoverlay" id="gokusaiyan" class="booth-capture-button">Goku Saiyan hair</a>
+                <a href="?switchoverlay" id="gohan" class="booth-capture-button">Gohan hair</a>
+            </div>
+            
+            <script src="js/photo.js"></script>
+            <script src="js/reload.js"></script>
+            <script src="js/switchoverlay.js"></script>
             
         </div>
         <FOOTER align="center">
